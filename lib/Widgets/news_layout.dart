@@ -1,28 +1,22 @@
 // ignore_for_file: use_key_in_widget_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
-import '../models/news.dart';
 
 class NewsLayout extends StatelessWidget {
-  List<Article> newsList = [];
-  NewsLayout(this.newsList);
+  final String? author, title,description,image,content;
+ const NewsLayout(this.author,this.title,this.description,this.image,this.content);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(5.0),
-      child: Container(
-        padding: const EdgeInsets.all(3),
-        child: ListView.builder(
-          itemBuilder: ((context, index) {
-            return Column(
-              children: [
-                Image.network(newsList[index].urlToImage),
-              ],
-            );
-          }),
-          itemCount: newsList.length,
-        ),
+    return Container(
+      padding: const EdgeInsets.all(3),
+      child: Column(
+        children: [
+          Image.network(image!),
+          Text(description!),
+          const Divider(color: Colors.indigo),
+          const SizedBox(height: 5,)
+        ],
       ),
     );
   }

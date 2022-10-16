@@ -6,6 +6,8 @@ import '../models/news.dart';
 
 class NewsController extends GetxController {
   var newsList = <Article>[].obs;
+  var isLoading = true.obs;
+
   @override
   void onInit() {
     loadNews();
@@ -13,10 +15,15 @@ class NewsController extends GetxController {
   }
 
   void loadNews() async {
-    var news = await RemoteService.fetchNews();
+    try {
+      isLoading(true);
+      var news = await RemoteService.fetchNews();
 
-    if (news != null) {
-      newsList.value = news;
+      if (news != null) {
+        newsList.value = news;
+      }
+    } finally {
+      isLoading(false);
     }
   }
 }

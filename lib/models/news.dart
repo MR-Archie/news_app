@@ -38,13 +38,13 @@ class News {
 class Article {
   Article({
     this.source,
-    this.author,
-    this.title,
-    this.description,
+     this.author,
+     this.title,
+     this.description,
     this.url,
-   required this.urlToImage,
+    this.urlToImage,
     this.publishedAt,
-    this.content,
+     this.content,
   });
 
   Source? source;
@@ -52,7 +52,7 @@ class Article {
   String? title;
   String? description;
   String? url;
-  String urlToImage;
+  String? urlToImage;
   DateTime? publishedAt;
   String? content;
 

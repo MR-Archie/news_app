@@ -1,3 +1,5 @@
+// ignore_for_file: unrelated_type_equality_checks
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../controllers/news_controller.dart';
@@ -59,23 +61,30 @@ class HomePage extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            GetX<NewsController>(builder:(controller) {
-              return Padding(
-      padding: const EdgeInsets.all(5.0),
-    
-        child: ListView.builder(
-          itemBuilder: ((context, index) {
-            return Column(
-              children: [
-                Image.network(controller.newsList[index].urlToImage),
-                const SizedBox(height: 5,)
-              ],
-            );
-          }),
-          itemCount: controller.newsList.length,
-        ),
-    );
-            } ,),
+            GetX<NewsController>(
+              builder: (controller) {
+                if (controller.isLoading == true) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  return Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: ListView.builder(
+                      itemBuilder: ((context, index) {
+                        return NewsLayout(
+                            controller.newsList[index].author,
+                            controller.newsList[index].title,
+                            controller.newsList[index].description,
+                            controller.newsList[index].urlToImage,
+                            controller.newsList[index].content);
+                      }),
+                      itemCount: controller.newsList.length,
+                    ),
+                  );
+                }
+              },
+            ),
             Icon(Icons.phone_android_outlined),
             Icon(Icons.business_outlined),
             Icon(Icons.bookmark_add_outlined),
