@@ -2,13 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../controllers/news_controller.dart';
-import '../Widgets/news_layout.dart';
-import 'package:get/get.dart';
+import '../tabs/business.dart';
+import '../tabs/tech.dart';
+import '../tabs/home.dart';
 
 class HomePage extends StatelessWidget {
-  final newsController = Get.put(NewsController());
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -59,37 +57,12 @@ class HomePage extends StatelessWidget {
                 ),
               ]),
         ),
-        body: TabBarView(
-          children: [
-            GetX<NewsController>(
-              builder: (controller) {
-                if (controller.isLoading == true) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                } else {
-                  return Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: ListView.builder(
-                      itemBuilder: ((context, index) {
-                        return NewsLayout(
-                            controller.newsList[index].author,
-                            controller.newsList[index].title,
-                            controller.newsList[index].description,
-                            controller.newsList[index].urlToImage,
-                            controller.newsList[index].content);
-                      }),
-                      itemCount: controller.newsList.length,
-                    ),
-                  );
-                }
-              },
-            ),
-            Icon(Icons.phone_android_outlined),
-            Icon(Icons.business_outlined),
-            Icon(Icons.bookmark_add_outlined),
-          ],
-        ),
+        body: TabBarView(children: [
+          Home(),
+          Tech(),
+          Business(),
+          Icon(Icons.bookmark_add_outlined),
+        ]),
       ),
     );
   }
