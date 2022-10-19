@@ -38,7 +38,7 @@ class NewsLayout extends StatelessWidget {
                   children: [
                     Container(
                       height: 250,
-                      width: 150,
+                      width: 200,
                       padding: const EdgeInsets.all(3),
                       child: Image.network(
                         image!,
