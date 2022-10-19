@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import './screens/home_page.dart';
 
+import './screens/descriptions.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -14,10 +16,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'News_App',
       theme: ThemeData(
           primarySwatch: Colors.indigo, secondaryHeaderColor: Colors.teal),
       home: HomePage(),
+      routes: {
+        '/description': (context) => Description(),
+      },
     );
   }
 }

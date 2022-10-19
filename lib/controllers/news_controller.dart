@@ -16,7 +16,6 @@ class NewsController extends GetxController {
 
   void loadNews(url) async {
     try {
-      print((url));
       isLoading(true);
       var news = await RemoteService.fetchNews(url);
 
