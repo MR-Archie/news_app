@@ -40,12 +40,16 @@ class NewsLayout extends StatelessWidget {
                       height: 250,
                       width: 150,
                       padding: const EdgeInsets.all(3),
-                      child: Image.network(image!),
+                      child: Image.network(
+                        image!,
+                        fit: BoxFit.fill,
+                      ),
                     ),
                     const SizedBox(
                       width: 10,
                     ),
                     Flexible(
+                      fit: FlexFit.tight,
                       child: Container(
                         alignment: Alignment.centerRight,
                         width: 180,
@@ -53,7 +57,7 @@ class NewsLayout extends StatelessWidget {
                         child: Text(
                           title!,
                           maxLines: 7,
-                          style: GoogleFonts.openSans(
+                          style: GoogleFonts.ptSans(
                               fontWeight: FontWeight.w600, fontSize: 18),
                           overflow: TextOverflow.ellipsis,
                         ),
