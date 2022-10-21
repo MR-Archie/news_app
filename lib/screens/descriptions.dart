@@ -91,10 +91,10 @@ class Description extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    "𝕯 𝖊 𝖘 𝖈 𝖗 𝖎 𝖕 𝖙 𝖎 𝖔 𝖓 :   ${content!} \n \n 𝗖𝗹𝗶𝗰𝗸 𝗵𝗲𝗿𝗲 𝘁𝗼 𝗿𝗲𝗮𝗱 𝗺𝗼𝗿𝗲 𝗮𝗯𝗼𝘂𝘁 𝘁𝗵𝗲 𝗮𝗿𝘁𝗶𝗰𝗹𝗲 :",
-                    style: GoogleFonts.encodeSans(
+                    "𝕯 𝖊 𝖘 𝖈 𝖗 𝖎 𝖕 𝖙 𝖎 𝖔 𝖓 :   ${content!} \n \n Follow the given link to read more about the article :",
+                    style: GoogleFonts.ptSans(
                       fontSize: 18,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w800,
                     ),
                   ),
                   const SizedBox(

@@ -11,11 +11,15 @@ class Business extends StatelessWidget {
 
   Future<void> _refreshNews(BuildContext context) async {
     return _controller.loadNews(
-        'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=ef1191ebf36b4d10bc40e7144186eef0');
+        'https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=ef1191ebf36b4d10bc40e7144186eef0');
   }
 
   @override
   Widget build(BuildContext context) {
+
+_controller.loadNews(
+        'https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=ef1191ebf36b4d10bc40e7144186eef0');
+
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: RefreshIndicator(
@@ -29,26 +33,26 @@ class Business extends StatelessWidget {
             } else {
               return ListView.builder(
                 itemBuilder: ((context, index) {
-                 return (_controller.newsList[index].author != null &&
-                              _controller.newsList[index].description != null &&
-                              _controller.newsList[index].urlToImage != null &&
-                              _controller.newsList[index].title != null &&
-                              _controller.newsList[index].content != null&&
-                          _controller.newsList[index].url !=null
-                              
-                          ? Container(
-                               height: 250,
-                          margin: const EdgeInsets.all(4),
-                            child: NewsLayout(
-                                _controller.newsList[index].author,
-                                _controller.newsList[index].title,
-                                _controller.newsList[index].description,
-                                _controller.newsList[index].urlToImage,
-                                _controller.newsList[index].content,
-                                _controller.newsList[index].url,),
-                          )
-                          : Container()
-                          );;
+                  return (_controller.newsList[index].author != null &&
+                          _controller.newsList[index].description != null &&
+                          _controller.newsList[index].urlToImage != null &&
+                          _controller.newsList[index].title != null &&
+                          _controller.newsList[index].content != null &&
+                          _controller.newsList[index].url != null
+                      ? Container(
+                          height: 250,
+                          
+                          child: NewsLayout(
+                            _controller.newsList[index].author,
+                            _controller.newsList[index].title,
+                            _controller.newsList[index].description,
+                            _controller.newsList[index].urlToImage,
+                            _controller.newsList[index].content,
+                            _controller.newsList[index].url,
+                          ),
+                        )
+                      : Container());
+                  ;
                 }),
                 itemCount: _controller.newsList.length,
               );

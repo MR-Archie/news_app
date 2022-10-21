@@ -3,8 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../screens/descriptions.dart';
-
 class NewsLayout extends StatelessWidget {
   final String? author, title, description, image, content, url;
   const NewsLayout(this.author, this.title, this.description, this.image,
@@ -39,10 +37,14 @@ class NewsLayout extends StatelessWidget {
                     Container(
                       height: 250,
                       width: 200,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.grey,
+                      ),
                       padding: const EdgeInsets.all(3),
                       child: Image.network(
                         image!,
-                        fit: BoxFit.fill,
+                        fit: BoxFit.cover,
                       ),
                     ),
                     const SizedBox(
@@ -57,8 +59,8 @@ class NewsLayout extends StatelessWidget {
                         child: Text(
                           title!,
                           maxLines: 7,
-                          style: GoogleFonts.ptSans(
-                              fontWeight: FontWeight.w600, fontSize: 18),
+                          style: GoogleFonts.roboto(
+                              fontWeight: FontWeight.w700, fontSize: 18),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),

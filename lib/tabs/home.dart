@@ -36,18 +36,17 @@ class Home extends StatelessWidget {
                           _controller.newsList[index].urlToImage != null &&
                           _controller.newsList[index].title != null &&
                           _controller.newsList[index].content != null &&
-                          _controller.newsList[index].url !=null
+                          _controller.newsList[index].url != null
                       ? Container(
                           height: 250,
-                          margin: const EdgeInsets.all(4),
                           child: NewsLayout(
-                              _controller.newsList[index].author,
-                              _controller.newsList[index].title,
-                              _controller.newsList[index].description,
-                              _controller.newsList[index].urlToImage,
-                              _controller.newsList[index].content,
-                              _controller.newsList[index].url,
-                              ),
+                            _controller.newsList[index].author,
+                            _controller.newsList[index].title,
+                            _controller.newsList[index].description,
+                            _controller.newsList[index].urlToImage,
+                            _controller.newsList[index].content,
+                            _controller.newsList[index].url,
+                          ),
                         )
                       : Container());
                 }),
