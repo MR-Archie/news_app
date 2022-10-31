@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../tabs/bookmark.dart';
 import '../tabs/business.dart';
 import '../tabs/tech.dart';
 import '../tabs/home.dart';
@@ -61,7 +62,7 @@ class HomePage extends StatelessWidget {
           Home(),
           Tech(),
           Business(),
-          Icon(Icons.bookmark_add_outlined),
+          Bookmarks(),
         ]),
       ),
     );

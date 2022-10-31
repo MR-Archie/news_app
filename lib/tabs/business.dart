@@ -16,8 +16,7 @@ class Business extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-_controller.loadNews(
+    _controller.loadNews(
         'https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=ef1191ebf36b4d10bc40e7144186eef0');
 
     return Padding(
@@ -41,7 +40,6 @@ _controller.loadNews(
                           _controller.newsList[index].url != null
                       ? Container(
                           height: 250,
-                          
                           child: NewsLayout(
                             _controller.newsList[index].author,
                             _controller.newsList[index].title,
@@ -52,7 +50,6 @@ _controller.loadNews(
                           ),
                         )
                       : Container());
-                  ;
                 }),
                 itemCount: _controller.newsList.length,
               );
