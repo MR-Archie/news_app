@@ -51,8 +51,7 @@ class NewsLayout extends StatelessWidget {
                   const SizedBox(
                     width: 10,
                   ),
-                  Flexible(
-                    fit: FlexFit.tight,
+                  Expanded(
                     child: Container(
                       alignment: Alignment.center,
                       width: 180,

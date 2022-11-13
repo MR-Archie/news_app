@@ -1,17 +1,35 @@
 // ignore_for_file: deprecated_member_use
+import 'dart:convert';
+
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:news_app/models/news_convert.dart';
 
 class Description extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final ref = FirebaseDatabase.instance.reference();
+    final ref = FirebaseDatabase.instance.reference().child('News/');
 
-    DatabaseReference saveNews(Map<String, dynamic> news) {
-      var id = ref.child('News/').push();
-      id.set(news);
-      return id;
+    void setNews(Map<String, dynamic> news) {
+  /*  var f = 0;
+      ref.once().then((event) {
+        print("News is : $news \n\n");
+        late String snapshotData = json.encode(event.snapshot.value);
+        late var snapValue = newsConvertFromJson(snapshotData).toJson();
+        print("Here the value is : $snapValue");
+        if (mapEquals(snapValue, news)) {
+          ref.child(snapshotData).remove();
+          f = 1;
+        }
+      });
+
+      if (f == 0) {
+        ref.push().set(news);
+      }*/
+
+      ref.push().set(news);
     }
 
     final args =
@@ -96,12 +114,11 @@ class Description extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Flexible(
-              flex: 1,
-              child: Container(
-                color: Colors.white,
-                width: 250,
-                height: 300,
+            Container(
+              color: Colors.white,
+              width: 250,
+              height: 300,
+              child: SingleChildScrollView(
                 child: Column(
                   children: [
                     Text(
@@ -124,7 +141,7 @@ class Description extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           onPressed: (() {
             var newsData = args as Map<String, dynamic>;
-            saveNews(newsData);
+            setNews(newsData);
           }),
           child: const Icon(
             Icons.bookmark_add_outlined,
