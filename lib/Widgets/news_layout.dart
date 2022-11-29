@@ -28,24 +28,27 @@ class NewsLayout extends StatelessWidget {
               });
             },
             child: Card(
-              elevation: 3,
+              elevation: 2,
               color: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(9),
               ),
               child: Row(
                 children: [
+                  const SizedBox(
+                    width: 2,
+                  ),
                   Container(
                     height: 250,
                     width: 200,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(9),
-                      color: Colors.tealAccent,
-                    ),
-                    padding: const EdgeInsets.all(3),
-                    child: Image.network(
-                      image!,
-                      fit: BoxFit.cover,
+                    padding: const EdgeInsets.all(8),
+                    child: Card(
+                      elevation: 3,
+                      borderOnForeground: false,
+                      child: Image.network(
+                        image!,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   const SizedBox(

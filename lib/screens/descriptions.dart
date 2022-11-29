@@ -13,7 +13,7 @@ class Description extends StatelessWidget {
     final ref = FirebaseDatabase.instance.reference().child('News/');
 
     void setNews(Map<String, dynamic> news) {
-  /*  var f = 0;
+      /*  var f = 0;
       ref.once().then((event) {
         print("News is : $news \n\n");
         late String snapshotData = json.encode(event.snapshot.value);
@@ -66,6 +66,7 @@ class Description extends StatelessWidget {
         ),
         body: ListView(
           children: [
+            // ignore: sized_box_for_whitespace
             Container(
               height: 250,
               width: MediaQuery.of(context).size.width,
@@ -74,55 +75,45 @@ class Description extends StatelessWidget {
                 fit: BoxFit.fill,
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
             Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(1),
-                gradient: const LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.topRight,
-                  tileMode: TileMode.clamp,
-                  colors: [Colors.pinkAccent, Colors.tealAccent],
-                ),
-              ),
-              padding: const EdgeInsets.only(left: 5, top: 2),
-              child: Text(
-                description!,
-                style: GoogleFonts.encodeSans(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            Container(
-              padding: const EdgeInsets.only(left: 5, top: 2),
-              child: Center(
-                child: Text(
-                  "- ${author!}",
-                  style: GoogleFonts.slabo13px(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
+              padding: const EdgeInsets.all(10),
               color: Colors.white,
-              width: 250,
-              height: 300,
               child: SingleChildScrollView(
                 child: Column(
                   children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: Colors.black)),
+                      child: Text(
+                        description!,
+                        style: GoogleFonts.encodeSans(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Center(
+                      child: Text(
+                        "- ${author!}",
+                        style: GoogleFonts.slabo13px(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     Text(
-                      "𝕯 𝖊 𝖘 𝖈 𝖗 𝖎 𝖕 𝖙 𝖎 𝖔 𝖓 :   ${content!} \n \n Follow the given link to read more about the article :",
+                      "𝕯 𝖊 𝖘 𝖈 𝖗 𝖎 𝖕 𝖙 𝖎 𝖔 𝖓 :   ${content!.substring(0, content.indexOf("["))} \n \n Follow the given link to read more about the article :",
                       style: GoogleFonts.ptSans(
                         fontSize: 18,
                         fontWeight: FontWeight.w800,
